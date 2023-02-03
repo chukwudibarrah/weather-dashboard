@@ -47,9 +47,9 @@ function buildQueryURL() {
             url: queryURL,
             method: "GET"
         }).then(function(results){
-            console.log('the temp is ' + JSON.stringify(results.list[0].main.temp));            
-            console.log('the wind is ' + JSON.stringify(results.list[3].wind.speed));            
-            console.log('the humidity is ' + JSON.stringify(results.list[0].main.humidity));          
+            console.log('the temp is ' + JSON.stringify(results.list[0].main.temp) + "°C");            
+            console.log('the wind is ' + JSON.stringify(results.list[3].wind.speed) + "KPH");            
+            console.log('the humidity is ' + JSON.stringify(results.list[0].main.humidity) + "%");          
         })
 
      
