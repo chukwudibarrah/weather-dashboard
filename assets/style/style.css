@@ -1,0 +1,66 @@
+.weather-header {
+    background-color: midnightblue;
+}
+
+.h2, h2 {
+    font-weight: 700;
+    display: inline-block;
+    line-height: 5rem;
+}
+
+h2#form-heading {
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 2;
+}
+
+/* increase size of weather metris on the current weather */
+p.weather-metrics {
+    font-size: 20px;
+}
+
+/* adjust the left margins of the search form */
+.form-group {
+    margin-left: 20px;
+}
+
+/* adjust the search input area */
+input#search-input {
+    width: 100%;
+    height: 50px;
+}
+
+button#search-button {
+    display: flex;
+    padding-left: 60px;
+    justify-content: center;
+    margin-top: 10px;
+    padding-right: 60px;
+}
+
+.list-group-item {
+    background-color: rgba(128, 128, 128, 0);
+}
+
+
+.city-button {
+    background-color: #808080dd;
+    color: white;
+}
+
+#today {
+    border: 1px black;
+}
+
+
+
+.weather-forecast {
+    background-color: rgb(20, 57, 102);
+    align-items: flex-start;
+}
+
+.forecast-metric {
+    border: 0;
+    color: white;
+    padding: 10px;
+}
