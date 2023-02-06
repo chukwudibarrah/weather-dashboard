@@ -32,7 +32,7 @@ p.weather-metrics {
 }
 
 /* adjust the left margins of the search form */
-.form-group {
+.input-group {
     margin-left: 20px;
 }
 
@@ -45,15 +45,11 @@ input#search-input {
 
 button#search-button {
     margin-top: 10px;
-    position: relative;
-    right: 13px;
-    padding-left: 172px;
-    padding-right: 172px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    margin-bottom: 10px;
     border-radius: 5px;
     background-color: dodgerblue;
     color: white;
+    width: 100%;
 }
 
 .list-group-item {
@@ -68,7 +64,8 @@ button#search-button {
 .city-button {
     background-color: #808080dd;
     color: white;
-    margin: 5px;
+    margin-top: 10px;
+    width: 100%;
 }
 
 #today {
