@@ -2,10 +2,20 @@
     background-color: midnightblue;
 }
 
+h1.weather-header {
+    font-weight: 900;
+}
+
 .h2, h2 {
     font-weight: 700;
     display: inline-block;
     line-height: 5rem;
+}
+
+hr {
+    border-top: 1px solid #8c8b8b;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 h2#form-heading {
@@ -28,35 +38,64 @@ p.weather-metrics {
 input#search-input {
     width: 100%;
     height: 50px;
+    padding-left: 10px;
 }
 
 button#search-button {
-    display: flex;
-    padding-left: 60px;
-    justify-content: center;
     margin-top: 10px;
-    padding-right: 60px;
+    position: relative;
+    right: 13px;
+    padding-left: 172px;
+    padding-right: 172px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    color: white;
 }
 
 .list-group-item {
     background-color: rgba(128, 128, 128, 0);
+    padding: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
 }
 
 
 .city-button {
     background-color: #808080dd;
     color: white;
+    margin: 5px;
 }
 
 #today {
-    border: 1px black;
+    margin: 0px;
+    padding: 0px;
+    padding-left: 10px;
+    margin-bottom: 50px;
 }
 
+section#forecast {
+    margin-left: 10px;
+}
+
+.forecast-row {
+    margin-left: 0px;
+    margin-right: 20px;
+}
 
 
 .weather-forecast {
     background-color: rgb(20, 57, 102);
     align-items: flex-start;
+    margin: 10px;
+    border-radius: 0;
+}
+
+.forecast-date {
+    font-weight: 700;
+    font-size: larger;
 }
 
 .forecast-metric {

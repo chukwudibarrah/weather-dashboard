@@ -1,3 +1,6 @@
+var cityName = $('#search-input').val().trim();
+
+
 $('#search-button').on('click', function(event) {
     event.preventDefault();
 
@@ -6,12 +9,31 @@ $('#search-button').on('click', function(event) {
         alert('Please enter a city to search for.');
     }
 
-    buildQueryURL();
+    buildQueryURL(cityName);
     searchHistory();
-    getForecast();
+    getForecast(cityName);
     clearForm();
+
+    $('#search-input').val('');
 })
 
+function displayCity() {
+    // event.preventDefault();
+    var cityName = $(this).attr('data-name');
+    // alert('I have been clicked!');
+    // console.log(theCityName);
+
+    // var cityName = $('#search-input').val().trim();
+    // if (!cityName) {
+    //     alert('Please enter a city to search for.');
+    // }
+
+    buildQueryURL(cityName);
+    searchHistory();
+    getForecast(cityName);
+    clearForm();
+}
+$(document).on('click', '.city-button', displayCity);
 
 function searchHistory() {
     var searchHistory = []; // array to store the user search history
@@ -24,6 +46,11 @@ function searchHistory() {
     // if (searchHistory.includes(theCity)) {
     //     return;
     // }
+
+    // var hr = $('hr');
+    // hr.addClass('div-line');
+    // hr.text('----------------------------------------');
+    // $('.weather-hr').append(hr);
 
     // add city name data tags to cities
     button.attr("data-name", theCity);
@@ -47,8 +74,8 @@ function searchHistory() {
 }
 
 
-function buildQueryURL() {
-    var cityName = $('#search-input').val().trim();
+function buildQueryURL(cityName) {
+    // var cityName = $('#search-input').val().trim();
     var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
        //get geocoding information from city
@@ -89,14 +116,19 @@ function buildQueryURL() {
             $('#today').append(($('<p>').addClass('weather-metrics')).text('Humidity: ' + humidity));
 
             // display future weather data to page
-            $('#forecast').prepend($('<h3>').text("5-Day Forecast:"));
+            var h3 = $('<h3>');
+            h3.addClass('forecast-title');
+            h3.text("5-Day Forecast:")
+
+            $('#forecast').prepend(h3);
+            // $('#forecast').prepend($('<h3>').text("5-Day Forecast:"));
         })
     })
 }
 
 
-function getForecast() {
-    var cityName = $('#search-input').val().trim();
+function getForecast(cityName) {
+    // var cityName = $('#search-input').val().trim();
     var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
        //get geocoding information from city
@@ -158,6 +190,7 @@ function getForecast() {
 function clearForm() {
     $('#today').empty();
     $('.weather-forecast').empty();
+    $('.forecast-title').empty();
 }
 
 
