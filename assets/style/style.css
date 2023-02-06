@@ -1,5 +1,7 @@
+/* add heading background colour with gradient */
 .weather-header {
-    background-color: midnightblue;
+    background: rgb(105,104,138);
+    background: linear-gradient(90deg, rgba(105,104,138,1) 0%, rgba(9,9,121,1) 60%, rgba(9,9,121,1) 100%);
 }
 
 h1.weather-header {

@@ -1,6 +1,6 @@
 var cityName = $('#search-input').val().trim();
 
-
+// initial search 
 $('#search-button').on('click', function(event) {
     event.preventDefault();
 
@@ -17,6 +17,7 @@ $('#search-button').on('click', function(event) {
     $('#search-input').val('');
 })
 
+// display forecast when search history button is clicked
 function displayCity() {
     // event.preventDefault();
     var cityName = $(this).attr('data-name');
@@ -35,6 +36,7 @@ function displayCity() {
 }
 $(document).on('click', '.city-button', displayCity);
 
+// create array to store and display the search history
 function searchHistory() {
     var searchHistory = []; // array to store the user search history
     var button = $('<button>'); // li tags to display the cities later
@@ -56,14 +58,17 @@ function searchHistory() {
     button.attr("data-name", theCity);
     button.addClass("list-group-item btn city-button");
 
-    // searchHistory.length = 1;
+    // searchHistory.length = 6;
     
-    for (i = 0; i < 4; i++) {
+    for (i = 0; i < searchHistory.length; i++) {
         if (!cityName) {
             return;
         } else {
-        // console.log('this is the search history: ' + searchHistory[i]);
+        
         $('#history').append(button.text(searchHistory[i]));
+        // var oneCity = searchHistory[i];
+        // console.log('this is the search history: ' + searchHistory[i]);
+        
 
         localStorage.setItem('city', theCity);
         displayHistory();
