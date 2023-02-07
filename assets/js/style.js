@@ -47,21 +47,19 @@ function searchHistory() {
     var cityName = $('#search-input').val().trim();
     var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
     searchHistory.unshift(theCity);
-
-    // if (searchHistory.includes(theCity)) {
-    //     return;
-    // }
-
-    // var hr = $('hr');
-    // hr.addClass('div-line');
-    // hr.text('----------------------------------------');
-    // $('.weather-hr').append(hr);
+    
 
     // add city name data tags to cities
     button.attr("data-name", theCity);
     button.addClass("list-group-item btn city-button");
 
-    // searchHistory.length = 6;
+
+    // var getDataName = $('#city-button').attr('data-name');
+    // console.log(getDataName)
+
+    // // if (getDataName === theCity) {
+    // //     console.log(getDataName);
+    // // }
     
     for (i = 0; i < searchHistory.length; i++) {
         if (!cityName) {
@@ -69,11 +67,10 @@ function searchHistory() {
         } else {
         
         $('#history').append(button.text(searchHistory[i]));
-        // var oneCity = searchHistory[i];
-        // console.log('this is the search history: ' + searchHistory[i]);
-        
+        // $('#history').append(button.text(JSON.parse(localStorage.getItem('city'))));
 
-        localStorage.setItem('city', theCity);
+        localStorage.setItem('city', JSON.stringify(theCity));
+        // localStorage.getItem('city');
         displayHistory();
 
         }
