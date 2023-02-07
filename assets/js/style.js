@@ -1,4 +1,5 @@
 var cityName = $('#search-input').val().trim();
+$('#today').hide(); // hide the border of current weather when page loads
 
 // initial search 
 $('#search-button').on('click', function(event) {
@@ -13,6 +14,8 @@ $('#search-button').on('click', function(event) {
     searchHistory();
     getForecast(cityName);
     clearForm();
+
+    $('#today').show(); //show the current forecast when button is clicked
 
     $('#search-input').val('');
 })
@@ -84,7 +87,7 @@ function buildQueryURL(cityName) {
     var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
        //get geocoding information from city
-       var geoURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=e2ede3072a6799282bf4796231458b6b";
+       var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=e2ede3072a6799282bf4796231458b6b";
 
 
        
@@ -96,7 +99,7 @@ function buildQueryURL(cityName) {
         var lon = response[0].lon;
 
         // convert geocoding information to lat and lon details foweather api
-       var queryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric&appid=e2ede3072a6799282bf4796231458b6b";
+       var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric&appid=e2ede3072a6799282bf4796231458b6b";
 
         $.ajax({
             url: queryURL,
@@ -137,7 +140,7 @@ function getForecast(cityName) {
     var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
        //get geocoding information from city
-       var geoURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=e2ede3072a6799282bf4796231458b6b";
+       var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=e2ede3072a6799282bf4796231458b6b";
 
 
        
@@ -149,7 +152,7 @@ function getForecast(cityName) {
         var lon = response[0].lon;
 
         // convert geocoding information to lat and lon details foweather api
-       var queryURL = "http://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric&appid=e2ede3072a6799282bf4796231458b6b";
+       var queryURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=metric&appid=e2ede3072a6799282bf4796231458b6b";
 
         $.ajax({
             url: queryURL,

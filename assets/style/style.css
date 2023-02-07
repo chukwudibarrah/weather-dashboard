@@ -69,10 +69,8 @@ button#search-button {
 }
 
 #today {
-    margin: 0px;
-    padding: 0px;
-    padding-left: 10px;
-    margin-bottom: 50px;
+    margin: 10px;
+    border: 1px solid black;
 }
 
 section#forecast {
