@@ -1,5 +1,20 @@
+var searchHistory = JSON.parse(localStorage.getItem('city')) || [];
+displayHistory();
+
 var cityName = $('#search-input').val().trim();
 $('#today').hide(); // hide the border of current weather when page loads
+// $('.hr').hide();
+
+// create array to store the search history
+function storeHistory() {    
+
+    var cityName = $('#search-input').val().trim();
+    var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+    searchHistory.push(theCity);
+
+    localStorage.setItem('city', JSON.stringify(searchHistory));
+}
+
 
 // initial search 
 $('#search-button').on('click', function(event) {
@@ -11,8 +26,9 @@ $('#search-button').on('click', function(event) {
     }
 
     buildQueryURL(cityName);
-    searchHistory();
+    storeHistory();
     getForecast(cityName);
+    displayHistory();
     clearForm();
 
     $('#today').show(); //show the current forecast when button is clicked
@@ -20,63 +36,19 @@ $('#search-button').on('click', function(event) {
     $('#search-input').val('');
 })
 
+
 // display forecast when search history button is clicked
 function displayCity() {
-    // event.preventDefault();
-    var cityName = $(this).attr('data-name');
-    // alert('I have been clicked!');
-    // console.log(theCityName);
+    var cityName = $(this).attr("data-name");
+    console.log(cityName);
 
-    // var cityName = $('#search-input').val().trim();
-    // if (!cityName) {
-    //     alert('Please enter a city to search for.');
-    // }
-
-    buildQueryURL(cityName);
-    searchHistory();
-    getForecast(cityName);
     clearForm();
-}
-$(document).on('click', '.city-button', displayCity);
-
-// create array to store and display the search history
-function searchHistory() {
-    var searchHistory = []; // array to store the user search history
-    var button = $('<button>'); // li tags to display the cities later
-
-    var cityName = $('#search-input').val().trim();
-    var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
-    searchHistory.unshift(theCity);
+    buildQueryURL(cityName);
+    getForecast(cityName);
+    $('#today').show(); //show the current forecast when button is clicked
     
-
-    // add city name data tags to cities
-    button.attr("data-name", theCity);
-    button.addClass("list-group-item btn city-button");
-
-
-    // var getDataName = $('#city-button').attr('data-name');
-    // console.log(getDataName)
-
-    // // if (getDataName === theCity) {
-    // //     console.log(getDataName);
-    // // }
-    
-    for (i = 0; i < searchHistory.length; i++) {
-        if (!cityName) {
-            return;
-        } else {
-        
-        $('#history').append(button.text(searchHistory[i]));
-        // $('#history').append(button.text(JSON.parse(localStorage.getItem('city'))));
-
-        localStorage.setItem('city', JSON.stringify(theCity));
-        // localStorage.getItem('city');
-        displayHistory();
-
-        }
-        
-    }
 }
+$(document).on('click', '#city-button', displayCity);
 
 
 function buildQueryURL(cityName) {
@@ -134,7 +106,7 @@ function buildQueryURL(cityName) {
 
 function getForecast(cityName) {
     // var cityName = $('#search-input').val().trim();
-    var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
+    // var theCity = cityName.charAt(0).toUpperCase() + cityName.slice(1);
 
        //get geocoding information from city
        var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5&appid=e2ede3072a6799282bf4796231458b6b";
@@ -200,16 +172,17 @@ function clearForm() {
 
 
 function displayHistory() {
-    var button = $('<button>');
-    button.attr("data-name", theCity);
-    button.addClass("list-group-item btn city-button");
+    $(".hr").empty();
 
-    var theCity = localStorage.getItem('city')
+    for (i = 0; i < searchHistory.length; i++) {
+        storedCity = searchHistory[i];
+        // console.log(storedCity);
+        
+        var button = $('<button>');
+        button.attr("data-name", storedCity);
+        button.attr("id", 'city-button');
+        button.addClass("list-group-item btn city-button");
 
-    if (!theCity) {
-        return;
-    // } else {
-    //     $('#history').append(button.text(theCity));
-    }
+        $('.hr').append(button.text(storedCity));
 }
-
+}
