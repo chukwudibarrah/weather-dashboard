@@ -38,9 +38,11 @@ p.weather-metrics {
 
 /* adjust the search input area */
 input#search-input {
-    width: 100%;
-    height: 50px;
-    padding-left: 10px;
+	width: 100%;
+	height: 50px;
+	padding-left: 10px;
+	margin-right: 20px;
+	margin-left: -20px;
 }
 
 button#search-button {
@@ -69,34 +71,31 @@ button#search-button {
 }
 
 #today {
-    margin: 10px;
     border: 1px solid black;
 }
 
-section#forecast {
-    margin-left: 10px;
+#forecast {
+	margin-left: 0px;
 }
 
-.forecast-row {
+/* section#forecast {
+    margin-left: 10px;
+} */
+
+/* .forecast-row {
     margin-left: 0px;
     margin-right: 20px;
-}
+} */
 
 
 .weather-forecast {
     background-color: rgb(20, 57, 102);
-    align-items: flex-start;
-    margin: 10px;
-    border-radius: 0;
+    margin-bottom: 20px;
+    color: white;
+    padding: 10px;
 }
 
 .forecast-date {
     font-weight: 700;
     font-size: larger;
-}
-
-.forecast-metric {
-    border: 0;
-    color: white;
-    padding: 10px;
 }

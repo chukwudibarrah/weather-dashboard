@@ -5,6 +5,8 @@ var cityName = $('#search-input').val().trim();
 $('#today').hide(); // hide the border of current weather when page loads
 // $('.hr').hide();
 
+$('.forecast-row').hide();
+
 // create array to store the search history
 function storeHistory() {    
 
@@ -32,6 +34,7 @@ $('#search-button').on('click', function(event) {
     clearForm();
 
     $('#today').show(); //show the current forecast when button is clicked
+    $('.forecast-row').show();
 
     $('#search-input').val('');
 })
@@ -46,6 +49,8 @@ function displayCity() {
     buildQueryURL(cityName);
     getForecast(cityName);
     $('#today').show(); //show the current forecast when button is clicked
+
+    $('.forecast-row').show();
     
 }
 $(document).on('click', '#city-button', displayCity);
@@ -183,6 +188,6 @@ function displayHistory() {
         button.attr("id", 'city-button');
         button.addClass("list-group-item btn city-button");
 
-        $('.hr').append(button.text(storedCity));
+        $('#history').append(button.text(storedCity));
 }
 }
